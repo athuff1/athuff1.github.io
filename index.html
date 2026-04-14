@@ -316,7 +316,7 @@
           <div class="entry-company">Shriners Children's</div>
           <div class="entry-badge">Healthcare Security</div>
         </div>
-        <div class="entry-date">Apr 2023 — Present</div>
+        <div class="entry-date">Apr 2022 — Present</div>
         <ul class="entry-desc">
           <li>Developed and continue to mature a formal incident response program, encompassing runbooks, playbooks, post-incident review processes, and operational documentation.</li>
           <li>Lead incident response efforts in a healthcare environment, coordinating across technical and business stakeholders through all phases of the response lifecycle.</li>
@@ -325,19 +325,7 @@
           <li>Design and facilitate executive-level tabletop exercises focused on decision-making and organizational coordination during security events.</li>
           <li>Oversee the third-party risk management process, coordinating assessments across internal teams, vendors, and reviewers.</li>
           <li>Conduct periodic risk assessments and contribute to ongoing security control and compliance activities.</li>
-        </ul>
-      </div>
-
-      <div class="resume-entry">
-        <div>
-          <div class="entry-title">Application and Technical Support Coordinator</div>
-          <div class="entry-company">Shriners International</div>
-        </div>
-        <div class="entry-date">Apr 2022 — Apr 2023</div>
-        <ul class="entry-desc">
-          <li>Contributed to the development of incident response planning documentation to support organizational readiness.</li>
-          <li>Coordinated application security testing activities and supported associated follow-up efforts.</li>
-          <li>Provided technical support for a business-critical web application environment while contributing to security-related operational decisions.</li>
+          <li>Previously served in an application and technical support role within the same organization, contributing to incident response planning and application security testing coordination prior to transitioning into the current engineering role.</li>
         </ul>
       </div>
 
@@ -373,14 +361,12 @@
 
     <div class="resume-section fade-up">
       <div class="resume-section-title">Certifications</div>
-      <div class="cert-grid">
-        <div class="cert-item">
+      <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+        <div class="cert-item" style="min-width:160px;">
           <div class="cert-name">CISSP</div>
           <div class="cert-org">ISC2 · November 2024</div>
         </div>
-        <div class="credly-wrap">
-          <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="80904997-0c2e-4585-9c7c-07f722f12476" data-share-badge-host="https://www.credly.com"></div>
-        </div>
+        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="80904997-0c2e-4585-9c7c-07f722f12476" data-share-badge-host="https://www.credly.com"></div>
       </div>
     </div>
 
@@ -395,10 +381,7 @@
       </div>
     </div>
 
-    <a href="#" class="resume-download fade-up">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download PDF Resume
-    </a>
+
   </section>
 
   <section id="blog">
@@ -534,21 +517,11 @@
           observer.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 1200);
 
     function handleForm(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = 'Message sent ✓';
-      btn.style.background = 'var(--accent2)';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Send Message';
-        btn.style.background = '';
-        btn.disabled = false;
-        e.target.reset();
-      }, 3000);
-    }
-
-    const sections = document.querySelectorAll('section[
+      e.preve
