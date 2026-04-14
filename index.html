@@ -99,6 +99,7 @@
 
     #resume { border-top: 1px solid var(--border); }
     .resume-section { margin-bottom: 3rem; }
+    .resume-section:last-of-type { margin-bottom: 0; }
     .resume-section-title { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
     .resume-entry { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
     .resume-entry:last-child { border-bottom: none; }
@@ -217,6 +218,7 @@
       <div class="hero-actions">
         <a href="#resume" class="btn-primary">View Resume</a>
         <a href="#blog" class="btn-secondary">Read the Blog</a>
+        <a href="#contact" class="btn-secondary">Contact Info</a>
       </div>
       <div class="hero-stats fade-up">
         <div>
@@ -441,50 +443,24 @@
   </section>
 
   <section id="contact">
-    <div class="section-label fade-up">Get in touch</div>
-    <h2 class="section-title fade-up">Let's talk</h2>
-    <div class="contact-grid">
-      <div class="fade-up">
-        <p class="contact-intro">
-          Open to new opportunities in cybersecurity engineering, incident response leadership, and security
-          program development; particularly in healthcare, regulated industries, or organizations serious about
-          building real security capability. Recruiters and hiring managers welcome.
-        </p>
-        <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#0869646d7048607d6e6e257b6d6b7d7a617c71266b6765" class="contact-link">
-            <span class="contact-link-icon">EMAIL</span>
-            <div>
-              <div class="contact-link-text"><span class="__cf_email__" data-cfemail="2e4f424b566e465b4848035d4b4d5b5c475a57004d4143">[email&#160;protected]</span></div>
-              <div class="contact-link-sub">Best way to reach me</div>
-            </div>
-          </a>
-          <a href="https://www.linkedin.com/in/alexhuffstutler" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <span class="contact-link-icon">IN</span>
-            <div>
-              <div class="contact-link-text">LinkedIn</div>
-              <div class="contact-link-sub">linkedin.com/in/alexhuffstutler</div>
-            </div>
-          </a>
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-intro">Open to new opportunities in cybersecurity engineering, incident response leadership, and security program development; particularly in healthcare, regulated industries, or organizations serious about building real security capability. Recruiters and hiring managers welcome.</p>
+    <div class="contact-links">
+      <a href="mailto:alex@huff-security.com" class="contact-link">
+        <span class="contact-link-icon">EMAIL</span>
+        <div>
+          <div class="contact-link-text">alex@huff-security.com</div>
+          <div class="contact-link-sub">Best way to reach me</div>
         </div>
-      </div>
-      <div class="fade-up">
-        <form class="contact-form" onsubmit="handleForm(event)">
-          <div class="form-group">
-            <label class="form-label" for="fname">Name</label>
-            <input class="form-input" id="fname" type="text" placeholder="Jane Smith" required/>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="femail">Email</label>
-            <input class="form-input" id="femail" type="email" placeholder="jane@company.com" required/>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fmessage">Message</label>
-            <textarea class="form-textarea" id="fmessage" placeholder="Tell me about the opportunity..." required></textarea>
-          </div>
-          <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
-          <button type="submit" class="btn-primary" style="align-self:flex-start; cursor:pointer;">Send Message</button>
-        </form>
-      </div>
+      </a>
+      <a href="https://www.linkedin.com/in/alexhuffstutler" class="contact-link" target="_blank" rel="noopener noreferrer">
+        <span class="contact-link-icon">IN</span>
+        <div>
+          <div class="contact-link-text">LinkedIn</div>
+          <div class="contact-link-sub">linkedin.com/in/alexhuffstutler</div>
+        </div>
+      </a>
     </div>
   </section>
 
