@@ -151,8 +151,7 @@
     footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
     footer a { color: var(--accent); text-decoration: none; }
 
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up { opacity: 1; transform: none; }
 
     @media (max-width: 700px) {
       .nav-links, .nav-cta { display: none; }
@@ -178,7 +177,7 @@
       <li><a href="#blog">Blog</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="mailto:alex@huff-security.com" class="nav-cta" style="display:none" id="desktop-cta">Hire Me</a>
+    <a href="/cdn-cgi/l/email-protection#52333e372a123a2734347f21373127203b262b7c313d3f" class="nav-cta" style="display:none" id="desktop-cta">Hire Me</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -189,7 +188,7 @@
     <a href="#resume" onclick="closeMobile()">Resume</a>
     <a href="#blog" onclick="closeMobile()">Blog</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
-    <a href="mailto:alex@huff-security.com" onclick="closeMobile()">alex@huff-security.com</a>
+    <a href="/cdn-cgi/l/email-protection#0e6f626b764e667b6868237d6b6d7b7c677a77206d6163" onclick="closeMobile()"><span class="__cf_email__" data-cfemail="9cfdf0f9e4dcf4e9fafab1eff9ffe9eef5e8e5b2fff3f1">[email&#160;protected]</span></a>
   </div>
 
   <section class="hero" id="home">
@@ -452,10 +451,10 @@
           building real security capability. Recruiters and hiring managers welcome.
         </p>
         <div class="contact-links">
-          <a href="mailto:alex@huff-security.com" class="contact-link">
+          <a href="/cdn-cgi/l/email-protection#0869646d7048607d6e6e257b6d6b7d7a617c71266b6765" class="contact-link">
             <span class="contact-link-icon">EMAIL</span>
             <div>
-              <div class="contact-link-text">alex@huff-security.com</div>
+              <div class="contact-link-text"><span class="__cf_email__" data-cfemail="2e4f424b566e465b4848035d4b4d5b5c475a57004d4143">[email&#160;protected]</span></div>
               <div class="contact-link-sub">Best way to reach me</div>
             </div>
           </a>
@@ -493,7 +492,7 @@
     <p>© 2026 <a href="#">Alex Huffstutler</a> · CISSP · Built with intention · Secured by design</p>
   </footer>
 
-  <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
   <script>
     const toggle = document.getElementById('navToggle');
@@ -512,16 +511,4 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    setTimeout(() => {
-      document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
-    }, 1200);
-
-    function handleForm(e) {
-      e.preve
+        if (e.isInters
