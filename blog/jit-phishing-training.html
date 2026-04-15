@@ -146,116 +146,98 @@
 
     <div class="post-body">
 
-      <h2>The assumption built into most awareness programs</h2>
+      <h2>The goals of security awareness programs</h2>
 
       <p>
-        When someone clicks a simulated phishing link, the standard response is to assign them remedial training. This usually takes the form of a video with a short quiz attached. The logic is sound: the user made a mistake so we educate them. However, a user often sees it as "My Security department made me look like a fool, now I'm being punished by being forced to watch this video."       
+        The stated goal of most security awareness programs is something along the lines of “detecting user risk and training employees”. The unstated goal is “check a box, be within industry compliance, impact operations as minimally as possible”. There’s obviously a large gap between these goals and the most common forms of security awareness training available don’t do much to address either.     
       </p>
 
       <p>
-        Your users already know phishing is dangerous. They've sat through the annual
-        awareness training. They've seen the posters. The failure isn't ignorance, it's a momentary lapse in
-        judgment under realistic conditions. Sending them a twelve-minute video three days later doesn't address
-        that.
+        Most organizations follow this structure: 
+<ol>
+<li>Send test phishing campaigns to users</li>
+<li>Send remedial video training to users that fail, including a quiz</li>
+<li>Chase down users who do not complete the training</li>
+<li>Check a box that your organization does regular security awareness training</li>
+<li>Rinse and repeat</li>
+</ol>  
       </p>
 
       
-      <h2>What forced video training actually accomplishes</h2>
+      <h2>The built-in assumptions: do they hold up?</h2>
 
       <p>
-        What really happens when an employee fails a phishing simulation and gets assigned
-        remedial training? They feel embarrassed, probably even resentful. They complete the video because
-        they have to, not because they want to, which is not indicative of true learning. This resentment can fracture already difficult relationships with users as a whole, potentially driving down phish reports and overall buy-in to the organization's Cybersecurity program.
+        The assumptions here are that training videos will educate users, which reduces the likelihood of them clicking on a true positive attack email. The users won’t like failing or being forced to take the training so they’ll watch and learn how to spot attacks in the future so at the very least, their work won’t be disrupted on the next test. 
+      </p>
+    
+      <p>Users already know that phishing is dangerous. They've almost certainly learned about it at any corporate job they've held over the past five years. They learned it during on-boarding, they learned it during the annual training campaigns, and they see the fliers that are prominently displayed in the break room (<i>right?</i>). There isn’t much in these videos that users don’t already know, and if there is, are they aren’t in the best mental space to truly learn?</p>  
+
+      <h2>Why users click</h2>
+
+      <p>
+        I’ve spoken with many people who have failed phishing tests or have fallen victim to a true phishing attack and the majority of them knew the red flags and can easily identify them after the fact. The leading explanation is “I was going too fast”. Many IT professionals, including cybersecurity engineers <i>(ahem)</i> seem to have little patience for user errors. When it comes to security, they can cause threats to the organization which can add up to a lot more work. However, users are also overworked. They also have looming deadlines that they can’t miss, along with stresses of their own. 
+      </p>
+
+      <p>
+        Let’s reframe the situation. You are riding on a bus with your bag next to you. You’re answering some work emails to try and catch up, you lose focus on your surroundings, and someone snatches your bag. Consider the emotions you would feel at that time. Panic that your wallet and other sensitive information was in that bag. Feeling foolish for not having your bag better secured. Violated. Embarrassed. Angry. Now a police officer brings your bag back and informs you that the theft was a test, you failed due to your own shortcomings, and you now have to watch a video about how to not be robbed in the future. 
+      </p>
+
+      <p>
+       In that scenario, is the training going to be more helpful to you, or the fact that the incident itself occurred? 
+      </p>
+
+      <h2>Post-failure mindset and the consequences</h2>
+
+      <p>
+        "You made me feel like a fool, and now I'm being punished." This is paraphrased from a user that I spoke to after a test failure. They felt embarrassed and resentful. This resentment can fracture already difficult relationships with users as a whole, potentially driving down phish reports and overall buy-in to the organization's security program. This is the antithesis of the stated goals of security awareness training. 
+      </p>
+
+      <p>
+        When users don’t want to “deal” with security, the program has failed. Security awareness programs live and die by reporting rates. If your users are taught that engaging with security leads to punishment, or is a hassle in general, you are undermining the one behavior that matters most when a real attack lands in an inbox. A user who engages with a real phishing attack and says nothing because they fear consequences is a far greater risk than one who clicks and immediately reports it. 
       </p>
 
 <blockquote>
 This resentment can fracture already difficult relationships with users as a whole, potentially driving down phish reports and overall buy-in to the organization's Cybersecurity program.
-      </blockquote>
-
-      <p>
-        Security awareness programs live and die by reporting rates.
-        If your users are quietly learning that engaging with security leads to
-        punishment, or is a hassle in general, you are undermining the one behavior that matters most when a real attack lands
-        in an inbox. A user who clicks a real phishing link and says nothing because they fear consequences
-        is a far greater risk than one who clicks and immediately reports it.
-      </p>
+</blockquote>
 
       <h2>Just-in-time training operates on a different principle</h2>
 
       <p>
-        Just-in-time (JIT) training occurs at the moment of failure rather than hours or days afterward. When a
-        user clicks a simulated phishing link, instead of a landing page followed by a delayed training
-        assignment, they are immediately shown a brief, targeted explanation of what just happened and why
-        it was a threat indicator. Many JIT solutions also offer a brief quiz based off of the test email itself, forcing the user to identify the missed red flags. The learning occurs in context, at the exact moment the user is most
-        receptive to it.
+        "You made me feel like a fool, and now I'm being punished." That is a powerful statement that forced me to reevaluate my program. Regardless of the lofty goals of my program, this was the perceived outcome. I decided to make a change.
       </p>
 
       <p>
-        Immediate feedback is consistently more effective than delayed feedback at producing behavior change. A user who has just clicked a simulated phishing link
-        is engaged, attentive, and primed to receive information in a way that a user completing a training assigned three days later is not.
+        Back to the bus where your bag was stolen. The robbery itself was the learning moment, not the forced video telling you to do what you already know what to do. There is an option for security awareness training that capitalizes on that.
       </p>
+    
+    <p>
+        Just-in-time (JIT) training occurs at the moment of failure rather than hours or days later. When a user clicks a simulated phishing link, instead of a landing page followed by a delayed training assignment, they are immediately shown a brief, targeted explanation of what just happened and why it was a threat indicator. Many JIT solutions also offer a brief quiz based on the test email itself, prompting the user to identify the missed red flags. The learning occurs in context, at the exact moment the user is most receptive to it. 
+    </p>
 
-      <p>
-        JIT training can be designed to feel instructive rather than punitive. "Here is what you just encountered and here is how to spot it next time" lands
-        very differently than "you failed; complete the following training." One builds competence while the other builds avoidance.
-      </p>
+    <p>
+Immediate feedback is more effective than delayed feedback at producing change, and JIT training can be designed to feel instructive rather than punitive. "Here is what you just encountered and here is how to spot it next time" lands very differently than "you failed; complete the following training." One builds competence while the other builds avoidance. 
+</p>
+
 
       <h2>What the outcomes look like in practice</h2>
 
       <p>
-        Organizations that shift from punitive remediation to JIT intervention typically see improvement
-        across the two metrics that matter most: a decline in click rates on subsequent simulations, and phishing reporting rates increase. These outcomes tend to move together, which makes sense. When
-        users stop associating the simulation program with negative consequences, they engage with it
-        differently. They become participants rather than subjects.
+Organizations that shift from punitive remediation to JIT intervention typically see improvement across the two metrics that matter most: a decline in click rates on following simulations and an increase in phishing reporting rates. When users stop associating tests with negative consequences, they are more open to the testing process. They become participants rather than subjects.
       </p>
 
       <p>
-        In my own programs, the transition to a JIT model was one of several factors that
-        contributed to meaningful improvement in reporting rates over a twelve-month period. Separating
-        the precise contribution of JIT training from other program changes is difficult in a real
-        operational environment, but the trend is consistent: decrease in failure rates and an increase in reporting rates.
+In my own programs, the transition to a JIT model was one of several factors that contributed to meaningful improvement in reporting rates over a twelve-month period. It goes hand-in-hand with increased user engagement and understanding. Approach failures collaboratively rather than punitively and users will begin to see security as a service instead of a necessary nuisance. 
       </p>
 
-      <h2>The objection security leaders raise</h2>
+ <h2>A final word for CISOs</h2>
+<p>If you are a security leader evaluating your awareness program, the question worth asking is not "are our users completing their training?" It is "are our users more likely to report a suspicious email today than they were twelve months ago?" Click rates on simulations are a useful metric, but an incomplete one. Reporting rates tell you something more important: whether your users consider security as a shared responsibility rather than an external burden. </p>
 
-      <p>
-        The most common pushback I hear is about accountability. "If we don't assign training after a
-        failure, aren't we just letting people off the hook?" It's a reasonable question, especially in
-        regulated environments where documented training completion is often required by cyber insurance policies and other regulatory requirments.
-      </p>
-
-      <p>
-        There are two responses worth making here. First, JIT training <b>is</b> training. It can be logged,
-        tracked, and counted toward compliance requirements just as traditional assignments can. Second, the goal of a
-        security awareness program is not to document that training occurred. It is to reduce the
-        likelihood of a successful attack. Those are related but not identical objectives. When compliance
-        requirements drive program design in ways that undermine behavioral outcomes, the compliance
-        is being served at the expense of security. That trade-off deserves more scrutiny than it typically
-        receives. Again, Security Theater.
-      </p>
-
-      <h2>A more useful framing for the CISO conversation</h2>
-
-      <p>
-        If you are a security leader evaluating your awareness program, the question worth asking is not
-        "are our users completing their training?" It is "are our users more likely to report a suspicious
-        email today than they were twelve months ago?" Click rates on simulations are a useful signal but
-        an incomplete one. Reporting rates tell you something more important: whether your users have
-        internalized security as a shared responsibility rather than an external compliance burden.
-      </p>
-
-      <p>
-        JIT training, when implemented thoughtfully, is one of the more reliable methods for moving that
-        metric. It's not a silver bullet, but it presses the advantage when a user is most receptive to a learning opportunity and removes the punative nature historically seen in phish awareness training.
-      </p>
+<p>JIT training can be one of the more reliable methods for moving that needle. It's not a silver bullet, but it presses the advantage when a user is most receptive to a learning opportunity and removes the punitive nature historically seen in security awareness training. </p>
 
       <hr/>
 
       <p>
-        Phishing simulations are only as valuable as the behavioral change they drive. If your program
-        is generating completion records but flat reporting rates, the design deserves a second look.
-        The technology to deliver JIT training exists in most major awareness platforms. The harder
-        work is convincing stakeholders that accountability and punishment are not the same thing.
+Evaluate your goals for testing and review the data on your results. If the current solution is not moving your program towards your goals, it’s time for a change.
       </p>
 
     </div>
