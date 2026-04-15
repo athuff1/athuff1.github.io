@@ -165,6 +165,7 @@
       .hero { padding: calc(var(--nav-h) + 3rem) 1.25rem 3rem; }
       .hero-stats { gap: 2rem; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      #about > div { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; }
@@ -177,23 +178,23 @@
   <nav>
     <a href="#" class="nav-logo">huff<span>-security</span>.com</a>
     <ul class="nav-links">
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#resume">Resume</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Expertise</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="/cdn-cgi/l/email-protection#52333e372a123a2734347f21373127203b262b7c313d3f" class="nav-cta" style="display:none" id="desktop-cta">Hire Me</a>
+    <a href="mailto:alex@huff-security.com" class="nav-cta" style="display:none" id="desktop-cta">Hire Me</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#skills" onclick="closeMobile()">Skills</a>
-    <a href="#resume" onclick="closeMobile()">Resume</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#skills" onclick="closeMobile()">Expertise</a>
     <a href="#blog" onclick="closeMobile()">Blog</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
-    <a href="/cdn-cgi/l/email-protection#0e6f626b764e667b6868237d6b6d7b7c677a77206d6163" onclick="closeMobile()"><span class="__cf_email__" data-cfemail="9cfdf0f9e4dcf4e9fafab1eff9ffe9eef5e8e5b2fff3f1">[email&#160;protected]</span></a>
+    <a href="mailto:alex@huff-security.com" onclick="closeMobile()">alex@huff-security.com</a>
   </div>
 
   <section class="hero" id="home">
@@ -205,9 +206,9 @@
       <div class="hero-credential">CISSP</div>
       <p class="hero-title">Building programs that <strong>hold the line.</strong></p>
       <p class="hero-desc">
-        Cybersecurity engineer specializing in incident response program development, security operations,
-        and compliance-aligned security within healthcare and regulated environments. I don't just respond
-        to incidents; I build the infrastructure that makes response faster, smarter, and repeatable.
+        I'm a cybersecurity engineer specializing in incident response in healthcare. My focus is not just
+        on responding when something goes wrong, but working with others to close the gaps and make sure
+        the threat is minimized for next time.
       </p>
       <div class="hero-tags">
         <span class="hero-tag">Incident Response</span>
@@ -220,7 +221,8 @@
         <span class="hero-tag">AWS / Azure</span>
       </div>
       <div class="hero-actions">
-        <a href="#resume" class="btn-primary">View Resume</a>
+        <a href="#about" class="btn-primary">About Me</a>
+        <a href="#skills" class="btn-secondary">Core Expertise</a>
         <a href="#blog" class="btn-secondary">Read the Blog</a>
         <a href="#contact" class="btn-secondary">Contact Info</a>
       </div>
@@ -241,9 +243,63 @@
     </div>
   </section>
 
+  <section id="about">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">About me</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-bottom:3rem;">
+      <div>
+        <p style="font-size:1rem; color:var(--muted2); line-height:1.85; margin-bottom:1.25rem;">
+          I focus on the human side of cybersecurity and have improved security posture by collaboratively
+          building workflows across multiple departments, creating IR teams comprised of experts in their
+          areas, and most importantly, educating people so they can make more informed decisions at work.
+          Education is one of the best risk treatments, and the ability to respond when an attacker gets
+          through, particularly in healthcare, is the type of high stakes I thrive in.
+        </p>
+        <p style="font-size:1rem; color:var(--muted2); line-height:1.85; margin-bottom:1.25rem;">
+          I specialize in building security programs from the ground up, focusing on workflow before the
+          need for tooling. I've led incident response across complex, regulated environments and spent
+          years working directly with executive leadership on risk, compliance, and security strategy.
+        </p>
+        <p style="font-size:1rem; color:var(--muted2); line-height:1.85;">
+          Outside of my day job, I write about security awareness, incident response program design, and
+          the gap between Security Theater and real-world security program improvements that work.
+        </p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem;">
+          <div style="font-family:var(--mono); font-size:0.68rem; color:var(--accent); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1rem;">Certification</div>
+          <a href="https://www.credly.com/badges/80904997-0c2e-4585-9c7c-07f722f12476" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; align-items:center; gap:0.75rem;">
+            <div style="font-family:var(--mono); font-size:1rem; font-weight:500; color:var(--accent);">CISSP</div>
+            <div>
+              <div style="font-size:0.82rem; color:var(--text);">ISC2 Certified</div>
+              <div style="font-family:var(--mono); font-size:0.62rem; color:var(--accent); margin-top:0.25rem;">View credential ↗</div>
+            </div>
+          </a>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem;">
+          <div style="font-family:var(--mono); font-size:0.68rem; color:var(--accent); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1rem;">Education</div>
+          <div style="font-size:0.9rem; color:var(--text); font-weight:500; margin-bottom:0.25rem;">B.A.S., Technology Development and Management</div>
+          <div style="font-family:var(--mono); font-size:0.75rem; color:var(--muted2);">St. Petersburg College · Focus: Cybersecurity · 2021</div>
+        </div>
+        <a href="https://www.linkedin.com/in/alexhuffstutler" target="_blank" rel="noopener noreferrer"
+          style="display:flex; align-items:center; justify-content:space-between; gap:1rem;
+          background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius);
+          padding:1.25rem 1.5rem; text-decoration:none; transition:border-color 0.2s;"
+          onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+          <div>
+            <div style="font-size:0.9rem; color:var(--text); font-weight:500;">Full work history on LinkedIn</div>
+            <div style="font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-top:0.25rem;">linkedin.com/in/alexhuffstutler</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:0.72rem; color:var(--accent); white-space:nowrap;">View ↗</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="skills">
     <div class="section-label fade-up">Expertise</div>
-    <h2 class="section-title fade-up">What I work with</h2>
+    <h2 class="section-title fade-up">Core expertise</h2>
     <div class="skills-grid fade-up">
       <div class="skill-card">
         <span class="skill-icon">01</span>
@@ -306,87 +362,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section id="resume">
-    <div class="section-label fade-up">Background</div>
-    <h2 class="section-title fade-up">Resume</h2>
-
-    <div class="resume-section fade-up">
-      <div class="resume-section-title">Experience</div>
-
-      <div class="resume-entry">
-        <div>
-          <div class="entry-title">Cybersecurity Engineer / Incident Response Lead</div>
-          <div class="entry-company">Shriners Children's</div>
-          <div class="entry-badge">Healthcare Security</div>
-        </div>
-        <div class="entry-date">Apr 2022 — Present</div>
-        <ul class="entry-desc">
-          <li>Developed and continue to mature a formal incident response program, encompassing runbooks, playbooks, post-incident review processes, and operational documentation.</li>
-          <li>Lead incident response efforts in a healthcare environment, coordinating across technical and business stakeholders through all phases of the response lifecycle.</li>
-          <li>Serve as primary liaison to the security operations center, supporting escalation workflows and response initiation.</li>
-          <li>Manage the organization's cybersecurity awareness and phishing simulation program across a large user population.</li>
-          <li>Design and facilitate executive-level tabletop exercises focused on decision-making and organizational coordination during security events.</li>
-          <li>Oversee the third-party risk management process, coordinating assessments across internal teams, vendors, and reviewers.</li>
-          <li>Conduct periodic risk assessments and contribute to ongoing security control and compliance activities.</li>
-          <li>Previously served in an application and technical support role within the same organization, contributing to incident response planning and application security testing coordination prior to transitioning into the current engineering role.</li>
-        </ul>
-      </div>
-
-      <div class="resume-entry">
-        <div>
-          <div class="entry-title">Security Specialist</div>
-          <div class="entry-company">Informed Medical Decisions Inc. (InformedDNA)</div>
-          <div class="entry-badge">Principal Security Role</div>
-        </div>
-        <div class="entry-date">Jun 2019 — Mar 2022</div>
-        <ul class="entry-desc">
-          <li>Served as the principal security resource, working directly with executive leadership to develop and maintain a comprehensive security program.</li>
-          <li>Supported a successful HITRUST certification effort, contributing to project coordination, evidence collection, and audit preparation activities.</li>
-          <li>Performed recurring security reviews across endpoint, network, cloud, and identity domains.</li>
-          <li>Conducted vendor risk assessments and reviewed third-party security documentation as part of an ongoing risk management process.</li>
-          <li>Developed and maintained a broad library of security policies and procedures, supporting consistency and audit readiness across the organization.</li>
-        </ul>
-      </div>
-
-      <div class="resume-entry">
-        <div>
-          <div class="entry-title">Supervisor / Support Services Manager / IT Support</div>
-          <div class="entry-company">Brock and Scott, PLLC</div>
-        </div>
-        <div class="entry-date">Jul 2010 — Jun 2019</div>
-        <ul class="entry-desc">
-          <li>Advanced through progressively senior roles over a nine-year tenure, including team leadership and operational management responsibilities.</li>
-          <li>Maintained physical access control systems and performed periodic access reviews.</li>
-          <li>Provided end-user technical support and contributed to infrastructure and asset management activities.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="resume-section fade-up">
-      <div class="resume-section-title">Certifications</div>
-      <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-        <a href="https://www.credly.com/badges/80904997-0c2e-4585-9c7c-07f722f12476" target="_blank" rel="noopener noreferrer" class="cert-item" style="text-decoration:none;">
-          <div class="cert-name">CISSP</div>
-          <div class="cert-org">ISC2</div>
-          <div style="font-family:var(--mono);font-size:0.62rem;color:var(--accent);margin-top:0.5rem;letter-spacing:0.06em;">View credential ↗</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="resume-section fade-up">
-      <div class="resume-section-title">Education</div>
-      <div class="resume-entry">
-        <div>
-          <div class="entry-title">Bachelor of Applied Science, Technology Development and Management</div>
-          <div class="entry-company">St. Petersburg College, Focus: Cybersecurity</div>
-        </div>
-        <div class="entry-date">May 2021</div>
-      </div>
-    </div>
-
-
   </section>
 
   <section id="blog">
