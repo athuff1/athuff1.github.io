@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Security Theater: A Waste Of Time, Money, and Resources — Alex Huffstutler, CISSP</title>
+  <meta name="description" content="Passing an audit doesn't mean you're secure. Learn why Security Theater is costing your organization more than it's protecting it."/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0c0f;
+      --bg2:     #111418;
+      --bg3:     #181c22;
+      --border:  rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.13);
+      --accent:  #00e5a0;
+      --accent2: #00b87a;
+      --text:    #e8eaed;
+      --muted:   #6b7280;
+      --muted2:  #9ca3af;
+      --mono:    'IBM Plex Mono', monospace;
+      --sans:    'Sora', sans-serif;
+      --nav-h:   64px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+    ::selection { background: var(--accent); color: #000; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; background: rgba(10,12,15,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--mono); font-size: 0.95rem; font-weight: 500; color: var(--accent); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--muted2); }
+    .nav-back { font-family: var(--mono); font-size: 0.78rem; color: var(--muted2); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+
+    .post-wrap { max-width: 720px; margin: 0 auto; padding: calc(var(--nav-h) + 4rem) 2rem 6rem; }
+
+    .post-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-category {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      border: 1px solid rgba(0,229,160,0.25); padding: 3px 10px; border-radius: 3px;
+    }
+    .post-date { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+    .post-read-time { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+
+    .post-title {
+      font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700;
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+
+    .post-subtitle {
+      font-size: 1.1rem; color: var(--muted2); line-height: 1.7;
+      margin-bottom: 3rem; padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body { font-size: 1rem; line-height: 1.85; color: var(--muted2); }
+
+    .post-body p { margin-bottom: 1.5rem; }
+
+    .post-body h2 {
+      font-size: 1.3rem; font-weight: 600; color: var(--text);
+      margin: 2.5rem 0 1rem; letter-spacing: -0.01em;
+    }
+
+    .post-body h3 {
+      font-size: 1.05rem; font-weight: 600; color: var(--text);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-body ul, .post-body ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+    .post-body li { margin-bottom: 0.5rem; }
+
+    .post-body strong { color: var(--text); font-weight: 600; }
+
+    .post-body a {
+      color: #5ec9f0;
+      text-decoration: underline;
+      text-decoration-color: rgba(94,201,240,0.35);
+      text-underline-offset: 3px;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    .post-body a:hover {
+      color: #8cdcf7;
+      text-decoration-color: rgba(140,220,247,0.6);
+    }
+
+    .post-body blockquote {
+      border-left: 2px solid var(--accent);
+      margin: 2rem 0; padding: 1rem 1.5rem;
+      background: var(--bg2); border-radius: 0 8px 8px 0;
+      font-style: italic; color: var(--muted2);
+    }
+
+    .post-body code {
+      font-family: var(--mono); font-size: 0.85em;
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 2px 6px; border-radius: 4px; color: var(--accent);
+    }
+
+    .post-body pre {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    .post-body pre code {
+      background: none; border: none; padding: 0;
+      font-size: 0.88rem; color: var(--text);
+    }
+
+    .post-body hr {
+      border: none; border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    .post-footer {
+      margin-top: 4rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .post-footer-author { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+    .post-footer-author span { color: var(--accent); }
+    .back-link {
+      font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(0,229,160,0.3); padding: 0.5rem 1rem;
+      border-radius: 4px; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { background: rgba(0,229,160,0.07); border-color: var(--accent); }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem; text-align: center;
+      font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    .definition-block {
+      border: 1px solid var(--border2);
+      border-left: 3px solid var(--accent);
+      background: var(--bg2);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      font-family: var(--sans);
+    }
+    .definition-block .def-term {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .definition-block .def-pos {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-left: 0.4rem;
+    }
+    .definition-block .def-body {
+      margin-top: 0.5rem;
+      color: var(--muted2);
+      line-height: 1.7;
+    }
+    .definition-block .def-usage {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .post-wrap { padding: calc(var(--nav-h) + 2.5rem) 1.25rem 4rem; }
+      .post-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">huff<span>-security</span>.com</a>
+    <a href="../index.html#blog" class="nav-back">← Back to blog</a>
+  </nav>
+
+  <div class="post-wrap">
+
+    <div class="post-meta">
+      <span class="post-category">Compliance</span>
+      <span class="post-date">May 12, 2026</span>
+      <span class="post-read-time">5 min read</span>
+    </div>
+
+    <h1 class="post-title">Security Theater: A Waste Of Time, Money, and Resources</h1>
+
+    <p class="post-subtitle">
+      Checking a box may help you sleep better at night, but are you truly accomplishing anything or just spinning your wheels?
+    </p>
+
+    <div class="post-body">
+
+      <h2>What is Security Theater</h2>
+
+      <div class="definition-block">
+        <span class="def-term">security theater</span>
+        <span class="def-pos">n.</span>
+        <div class="def-body">Actions taken to look secure rather than be secure. Generally beloved by auditors, always ignored by attackers.</div>
+        <div class="def-usage">Usage: "We crushed our security and compliance audit, but it somehow took us 23 days to realize we'd been compromised. I guess all of those checkboxes were just Security Theater."</div>
+      </div>
+
+      <p>
+        In my previous posts I’ve mentioned the term “Security Theater”. I stole this phrase from a former manager, mentor, and close friend Evan Curry, (<a href="https://www.linkedin.com/in/evanthomascurry/" target="_blank" rel="noopener noreferrer">check out his LinkedIn!</a>), and it has resonated with me for years. To put it simply, Security Theater is the appearance of Security. It’s putting on a show, checking a box, taking actions to satisfy compliance without improving your security posture. In essence, it makes managers, directors, auditors, and execs feel good, but it’s often just a more generous representation of your organization’s security posture. 
+      </p>
+
+      <p>I want to level set before I keep going. I’m going to be bashing bureaucracy in this post. Please do not interpret this to mean that I think regulations, frameworks, audits, governing bodies, etc. are wastes of time or money, because I don’t. Cybersecurity frameworks are essential to proper governance and improved security posture. These frameworks take best practices into account and help security managers and others build out programs. I’m not bashing the theory of these things, I’m bashing the implementation of them. </p>
+
+      <h2>What’s My Problem With Bureaucracy?</h2>
+
+      <p>
+        Again, don’t break out your torches and pitchforks. I’m a fan of frameworks and regulations <i>(as much as anyone can be I guess)</i> and they are important. It’s the implementation that’s the sticking point. At some point the meaning behind the checkboxes gets lost and subsequently, the actions lose their meaning. 
+      </p>
+
+      <p>For example, check out <a href="https://csrc.nist.gov/pubs/sp/800/50/r1/final" target="_blank" rel="noopener noreferrer">NIST SP 800-50 Rev.1 </a>. This is a well written, in-depth guide on how to build a cybersecurity awareness program. 87 pages of how to successfully build a program that can achieve an increase in user awareness and a decrease in successful phishing attacks. Now look at the questionnaire on your last audit. I’m sure there is a question on there regarding security awareness training that probably reads something along the lines of “Does your organization conduct regular security awareness training?”. </p>
+
+      <p>87 pages of information distilled into one sentence feels unfair. Of course it’s impractical for auditors to ask other questions such as “Have you seen an improvement in your metrics from your security awareness testing?” or “Has user engagement improved? Are they reporting more messages as phishing?”. Auditors leave these unasked questions to the security managers, but the process slowly starts to give managers tunnel vision. It’s like taking a test that you already know the answers to, and slowly your security program is built to pass the test instead of demonstrating a workable understanding of the content.</p>
+
+        
+      <h2>It All Comes Down To Motivations</h2>
+
+      <p>
+        People’s actions come down to motivation. Security Theater persists because it serves the interests of everyone in the supply chain, not just your organization's actual security. Executives want to minimize liability and satisfy the board. A passed audit does that. Auditors want clean, defensible reports. Checklists do that. Security managers want budget, headcount, and job security. A certified program justifies all three. Nobody in that chain is acting in bad faith necessarily, they're just following their incentives which all point to the same place: the checklist.
+      </p>
+
+      <blockquote>“Men are moved by two levers only: fear and self-interest.” ― Napoleon Bonaparte </blockquote>
+
+      <p>This is why it's worth stepping back and asking yourself what you actually want out of your program. Not what the auditor wants. Not what satisfies your CISO's quarterly report. What would make this program genuinely harder for an attacker to work around?</p>
+
+      <h2>The Final Act </h2>
+      
+      <p>That’s the definition of Security Theater. A term I shamelessly stole and will continue to use for the rest of my career. It’s not evil, and it’s not pointless, but it can lead to lackluster security programs. Don’t fall for the premise that a passed audit means your program is top shelf. It is the yardstick we have to measure our programs and report them to executive leadership, but always remember that security programs are processes of continuous improvement. </p>
+
+      <p>Start small and pick a program that’s near and dear to your heart. This is your opportunity to take something that has been ignored and breathe some life into it and give it meaning and substance. Find something that excites you, or that you haven’t squeezed every bit of value out of, and reinvent it <i>(Apologies for the prose, but this is one of my favorite parts of my job)</i>.  Review your utilization of your products, I’m sure there’s some functionality that hasn’t been tapped yet. This starts to create opportunities to make top-down improvements by starting at the policy level and working down. Stop performing security. Start practicing it.</p>
+
+
+      <hr/>
+
+
+    </div>
+
+    <div class="post-footer">
+      <div class="post-footer-author">Written by <span>Alex Huffstutler, CISSP</span></div>
+      <a href="../index.html#blog" class="back-link">← Back to blog</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 <a href="../index.html">Alex Huffstutler</a> · CISSP · Built with intention · Secured by design</p>
+  </footer>
+
+</body>
+</html>
