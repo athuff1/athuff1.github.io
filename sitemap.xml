@@ -10,6 +10,13 @@
   </url>
 
   <!-- Blog posts -->
+    <url>
+    <loc>https://huff-security.com/blog/security-theater.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://huff-security.com/blog/jit-phishing-training.html</loc>
     <lastmod>2026-04-14</lastmod>
