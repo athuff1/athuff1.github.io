@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The AI You Didn't Approve: A Practitioner's Guide to Shadow AI — Alex Huffstutler, CISSP</title>
+  <meta name="description" content="our users are already using AI tools you never approved. Banning them outright is Security Theater. Here's how to get visibility into Shadow AI and govern it without driving it further underground."/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0c0f;
+      --bg2:     #111418;
+      --bg3:     #181c22;
+      --border:  rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.13);
+      --accent:  #00e5a0;
+      --accent2: #00b87a;
+      --text:    #e8eaed;
+      --muted:   #6b7280;
+      --muted2:  #9ca3af;
+      --mono:    'IBM Plex Mono', monospace;
+      --sans:    'Sora', sans-serif;
+      --nav-h:   64px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+    ::selection { background: var(--accent); color: #000; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; background: rgba(10,12,15,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--mono); font-size: 0.95rem; font-weight: 500; color: var(--accent); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--muted2); }
+    .nav-back { font-family: var(--mono); font-size: 0.78rem; color: var(--muted2); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+
+    .post-wrap { max-width: 720px; margin: 0 auto; padding: calc(var(--nav-h) + 4rem) 2rem 6rem; }
+
+    .post-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-category {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      border: 1px solid rgba(0,229,160,0.25); padding: 3px 10px; border-radius: 3px;
+    }
+    .post-date { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+    .post-read-time { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+
+    .post-title {
+      font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700;
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+
+    .post-subtitle {
+      font-size: 1.1rem; color: var(--muted2); line-height: 1.7;
+      margin-bottom: 3rem; padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body { font-size: 1rem; line-height: 1.85; color: var(--muted2); }
+
+    .post-body p { margin-bottom: 1.5rem; }
+
+    .post-body h2 {
+      font-size: 1.3rem; font-weight: 600; color: var(--text);
+      margin: 2.5rem 0 1rem; letter-spacing: -0.01em;
+    }
+
+    .post-body h3 {
+      font-size: 1.05rem; font-weight: 600; color: var(--text);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-body ul, .post-body ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+    .post-body li { margin-bottom: 0.5rem; }
+
+    .post-body strong { color: var(--text); font-weight: 600; }
+
+    .post-body a {
+      color: #5ec9f0;
+      text-decoration: underline;
+      text-decoration-color: rgba(94,201,240,0.35);
+      text-underline-offset: 3px;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    .post-body a:hover {
+      color: #8cdcf7;
+      text-decoration-color: rgba(140,220,247,0.6);
+    }
+
+    .post-body blockquote {
+      border-left: 2px solid var(--accent);
+      margin: 2rem 0; padding: 1rem 1.5rem;
+      background: var(--bg2); border-radius: 0 8px 8px 0;
+      font-style: italic; color: var(--muted2);
+    }
+
+    .post-body code {
+      font-family: var(--mono); font-size: 0.85em;
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 2px 6px; border-radius: 4px; color: var(--accent);
+    }
+
+    .post-body pre {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    .post-body pre code {
+      background: none; border: none; padding: 0;
+      font-size: 0.88rem; color: var(--text);
+    }
+
+    .post-body hr {
+      border: none; border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    .post-footer {
+      margin-top: 4rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .post-footer-author { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+    .post-footer-author span { color: var(--accent); }
+    .back-link {
+      font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(0,229,160,0.3); padding: 0.5rem 1rem;
+      border-radius: 4px; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { background: rgba(0,229,160,0.07); border-color: var(--accent); }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem; text-align: center;
+      font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    .definition-block {
+      border: 1px solid var(--border2);
+      border-left: 3px solid var(--accent);
+      background: var(--bg2);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      font-family: var(--sans);
+    }
+    .definition-block .def-term {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .definition-block .def-pos {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-left: 0.4rem;
+    }
+    .definition-block .def-body {
+      margin-top: 0.5rem;
+      color: var(--muted2);
+      line-height: 1.7;
+    }
+    .definition-block .def-usage {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .post-wrap { padding: calc(var(--nav-h) + 2.5rem) 1.25rem 4rem; }
+      .post-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">huff<span>-security</span>.com</a>
+    <a href="../index.html#blog" class="nav-back">← Back to blog</a>
+  </nav>
+
+  <div class="post-wrap">
+
+    <div class="post-meta">
+      <span class="post-category">Compliance</span>
+      <span class="post-date">July 31, 2026</span>
+      <span class="post-read-time">6 min read</span>
+    </div>
+
+    <h1 class="post-title">The AI You Didn't Approve: A Practitioner's Guide to Shadow AI</h1>
+
+    <p class="post-subtitle">
+      Somewhere in your org right now, someone is pasting a spreadsheet into a chatbot you've never heard of. Does that shock you?
+    </p>
+
+    <div class="post-body">
+
+      <h2>Naming the Thing</h2>
+
+      <p>
+        Shadow AI is the AI version of Shadow IT, including tools, models, and assistants that employees use to do their jobs without security or IT ever signing off. A marketing staffer running copy through a free chatbot. A developer letting an AI assistant provide code. An analyst feeding a browser extension a stack of records so it can "just summarize this real quick." A meeting bot nobody invited quietly transcribing a call that touched on an active investigation.
+      </p>
+
+      <p>Of course none of these users put in a ticket. They don't think of themselves as a security risk, and that is exactly what makes this hard. They were lured by the siren song of AI and assumed they were being more productive.</p>
+
+      <h2>The Stated Goal vs. The Unstated Goal</h2>
+
+      <p>Most organizations have technically "addressed" AI by now. The stated goal was "manage the risks of AI in the enterprise", but the unstated goal was "make the scary headline go away and have something to point to on the next audit." So, response probably looked something like this:</p>
+
+      <ol type="1">
+        <li>Send a company-wide email banning AI use</li>
+        <li>Block a handful of AI domains at your firewall</li>
+        <li>Add a blurb to the Acceptable Use Policy that everyone reads (<i>promise</i>)</li>
+        <li>Tell your executive team "Yep, we have an AI policy"</li>
+        <li>Profit</li>
+      </ol>
+
+     <p>If you read my <a href="https://huff-security.com/blog/security-theater.html" target="_blank" rel="noopener noreferrer">Security Theater</a> post, you probably know where this is going. A blanket ban that nobody follows is not a control, it's just Security Theater with an AUP stapled to it. A ban you can't enforce doesn't remove the risk, it just removes your visibility into it. Just like plugging your ears if your kids are screaming, you didn't stop the behavior, just stopped hearing about it.</p>
+
+     <h2>Desire Paths</h2>
+
+     <p>Have you ever seen a worn dirt trail cutting diagonally across a lawn? It's the one that appears because the paved sidewalk takes people the long way around. Those are called "Desire Paths". You can put up a "keep off the grass" sign and even lay fresh grass, but it doesn't matter. People will keep taking the shortcut, because the shortcut is faster and they don't care about your landscaping.</p>
+
+     <figure> <img src="/images/desire-path.jpg" alt="A dirt trail worn diagonally across a grassy park lawn, cutting the corner where two paved paths meet."> <figcaption> A desire path worn across the lawn at the Torre de Belém gardens in Lisbon. Photo by <a href="https://www.flickr.com/people/16782093@N03" target="_blank" rel="noopener noreferrer">Metro Centric</a>, via <a href="https://commons.wikimedia.org/wiki/File:Desire_path_(19811581366).jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, licensed under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>. </figcaption> </figure>
+
+     <p>Shadow AI is a desire path. Your users have found a route that gets them to the end of their task faster, and they are going to keep walking it. The sign telling them not to won't matter so the question worth asking is not "how do I keep them off the grass?", but is "why is my sidewalk in the wrong place?"</p>
+
+     <h2>The Scenario: A Helpful Little Python Script</h2>
+     <p>An analyst has a recurring, soul-crushing task: reconciling records between two systems that don't talk to each other. This historically takes hours a week, every week. One afternoon they discover that an AI coding assistant will happily write a script to do the whole thing. They describe the problem, paste in a few sample records so the tool can "understand the mapping," and thirty minutes later they have working code. It runs beautifully and they are thrilled. Through ignorance, they just created some issues:</p>
+     <ul>
+       <li>A batch of regulated records left your network and landed in a consumer AI tool's context window</li>
+       <li>An unreviewed script now runs against a production system of record under the analyst's credentials, most likely without full understanding of what the script is doing</li>
+       <li>There is no ticket, no code review, and no logging you would ever stumble across unless you went looking</li>
+     </ul>
+
+     <p>The user most likely didn't act in bad faith, they solved a real problem that the organization had ignored for years. But that's the tough part: the behavior you want to punish is often just initiative pointed at a gap you left open, grass be damned.</p>
+
+     <h2>The Risks, Minus the Fear-Mongering</h2>
+
+     <p><b>Data leaving your control:</b> This is the big one, especially in regulated environments. Once regulated or confidential data is in someone else's model context, you have lost the chain of custody. You can't prove where it went, whether it was retained, or whether it trained something. For a lot of us, that's a reportable event waiting to happen.</p>
+
+     <p><b>Output you can't trust feeding decisions you can't undo:</b> Models make mistakes. When an AI-generated summary, script, or "analysis" flows straight into a business decision with no human check, you've introduced a source of quiet, confident errors into your process.</p>
+
+     <p><b>Supply chain you never vetted:</b> That slick browser extension or free meeting bot is software you didn't review, granted permissions you didn't scope, phoning home to infrastructure you don't control. Meet the new boss, same as the old boss.</p>
+
+     <p><b>No audit trail:</b> You can't investigate, report on, or improve what you can't see.</p>
+
+     <h2>So What Do You Actually Do?</h2>
+
+     <p>Here's the approach I'd take, follow the <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST AI Risk Management Framework (AI 100-1)</a> and its four functions: GOVERN, MAP, MEASURE, and MANAGE. Reasonable people built a reasonable framework here, so why reinvent the wheel?</p>
+
+     <p>Get visibility first. You can't govern what you can't see, so start digging. Pull AI tool usage from your egress, your CASB or cloud app discovery, your endpoint telemetry, your DNS logs, and anything else you can think of. Where is everyone actually going? Can you see your desire paths?</p>
+
+     <p>Pave the sidewalk. Give people a sanctioned tool with the data protections turned on: an enterprise AI offering that contractually won't train on your data, scoped to your tenant, with logging you own. When you pave the desire path, people will start using it instead of killing a different patch of grass.</p>
+
+     <p>Write policy a user can follow. "Don't use AI" fails out of the gate beacuse it's everywhere! What's needed is a document that outlines: "Here's the approved tool, here's what you may put into it, here's what you may not, here's how to ask when you're unsure." This gives people a real path to "yes" and makes it less likely to wear out a dirt path around the policy.</p>
+
+     <p>Don't punish the early adopters. This is the same argument I made in <a href="https://huff-security.com/blog/jit-phishing-training.html" target="_blank" rel="noopener noreferrer">Stop Punishing Your Users</a>, and it applies here too (<i>strange, a recurring theme</i>). The employee who found a clever AI shortcut is not necessiarly your problem, but rather a good idicator. They just showed you, for free, exactly where your sanctioned tooling falls short. If you punish that and you don't stop Shadow AI, you just teach people to hide it better. Reward the honesty and you get a reporting culture instead of a concealment one.</p>
+
+     <p>Then keep going. My friends have a drinking game for how often I say "continuous improvement," so I'll just pour one for them (cheers, everyone). AI tooling is moving faster than any policy cycle you own. Whatever you write this quarter is like a drawing in the sand, the tide is going to wash it away very soon.</p>
+
+     <h2>A Final Word for CISOs</h2>
+
+     <p>If you're a security leader staring down Shadow AI, the tempting question is "how do we block this?" I think that's the wrong question, and it's the one that leads to a policy everyone quietly ignores while the risk keeps compounding out of sight.</p>
+
+     <p>The better question is the same one I keep coming back to across all of these posts: what do you actually want here? You don't want zero AI in your environment. That ship sailed, and honestly you probably don't want it back. What you <i><b>NEED</b></i> is visibility into where AI touches your data, a sanctioned path that's easier than the shortcut, and a culture where someone tells you about the clever thing they built instead of hiding it.</p>
+
+     <p>You can't get any of that by pretending the tools aren't already inside the building. Find the desire paths and help pave the good ones. Stop pretending the AI isn't there, and start governing it.</p>
+
+      <hr/>
+
+
+    </div>
+
+    <div class="post-footer">
+      <div class="post-footer-author">Written by <span>Alex Huffstutler, CISSP</span></div>
+      <a href="../index.html#blog" class="back-link">← Back to blog</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 <a href="../index.html">Alex Huffstutler</a> · CISSP · Built with intention · Secured by design</p>
+  </footer>
+
+</body>
+</html>
